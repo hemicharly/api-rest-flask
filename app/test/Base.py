@@ -4,5 +4,5 @@ from manage import app
 
 class BaseTestCase(TestCase):
     def create_app(self):
-        app.config.from_object('app.main.config.TestingConfig')
+        app.config.from_object('app.main.configure.Config.TestingConfig')
         return app

@@ -1,6 +1,6 @@
 import unittest
-from ..test.Base import BaseTestCase
-from ..main.service.UserService import UserService
+from Base import BaseTestCase
+from app.main.service.UserService import UserService
 
 sv = UserService()
 
