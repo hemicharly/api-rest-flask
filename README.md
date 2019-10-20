@@ -1,6 +1,8 @@
-#### FLASK RESTFUL API
+# FLASK RESTFUL API
 
-#### Commands
+This project is demo application API REST, using Flask with structure mvc
+
+### Commands
 
 * Installation package:
 
