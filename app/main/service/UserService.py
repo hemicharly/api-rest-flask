@@ -1,15 +1,21 @@
 users = [
     {
-        "username": "hemicharly",
+        "id": 1,
+        "username": "pedro",
         "password": "1234",
-        "public_id": "1",
-        "email": "hemicharlythiago@gmail.com"
+        "email": "pedro@gmail.com"
     },
     {
+        "id": 2,
         "username": "thiago",
         "password": "1234",
-        "public_id": "1",
         "email": "thiago@gmail.com"
+    },
+    {
+        "id": 3,
+        "username": "joao",
+        "password": "1234",
+        "email": "joao@gmail.com"
     }
 ]
 
@@ -24,16 +30,50 @@ class UserService:
             'message': 'User created',
             "data": data
         }
-        return response, 201
+        return response
+
+    def edit(self, id, data):
+        response = {
+            'status': 'success',
+            'message': 'User edited',
+            "data": self._edit(id, data)
+        }
+        return response
+
+    def remove(self, id):
+        response = {
+            'status': 'success',
+            'message': 'User removed',
+            "data": self.findById(id)
+        }
+        return response
 
     def findAll(self):
         response = users
-        return response, 200
+        return response
+
+    def findById(self, id):
+        response = {}
+        for user in users:
+            if user['id'] == int(id):
+                response = user
+                break
+        return response
 
     def findByUserName(self, username):
         response = {}
         for user in users:
-            if user['username'] == username:
+            if user['username'] == str(username):
                 response = user
                 break
-        return response, 200
+        return response
+
+    def _edit(self, id, data):
+        user = self.findById(id)
+
+        if user != {}:
+            user['username'] = data['username']
+            user['password'] = data['password']
+            user['email'] = data['email']
+
+        return user
